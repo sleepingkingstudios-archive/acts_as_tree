@@ -1,0 +1,9 @@
+# spec/fixtures.yml
+---
+fixtures:
+  - tree_mixin:
+    - tree_mixin:
+      - tree_mixin
+    - tree_mixin: []
+  - tree_mixin: []
+  - tree_mixin: []

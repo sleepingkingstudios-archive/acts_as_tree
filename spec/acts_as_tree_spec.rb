@@ -44,6 +44,8 @@ end # class RecursivelyCascadedTreeMixin
 describe SleepingKingStudios::ActsAsTree do
   include SleepingKingStudios::ActsAsTree
   
+  before :all do teardown_db end
+  
   before :each do setup_db end
   after :each do teardown_db end
   
@@ -232,5 +234,15 @@ describe SleepingKingStudios::ActsAsTree do
         it { (TreeMixinWithoutOrder.roots - [unordered0, unordered1]).should be_empty }
       end # describe roots class method
     end # describe unordered tree
+
+    describe "loop validator" do
+      before :each do
+        root0.parent_id = root0_child0_child0.id
+        root0.valid? # force validation
+      end # before :each
+      
+      it { root0.should_not be_valid }
+      it { root0.errors[:parent_id].join().should =~ /record cannot be its own descendant/i }
+    end # loop validator
   end # context initialized
 end # describe SleepingKingStudios::ActsAsTree

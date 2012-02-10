@@ -1,5 +1,6 @@
 # lib/acts_as_tree/class_methods.rb
 
+require 'acts_as_tree/avoid_grandfather_paradox_validator'
 require 'acts_as_tree/instance_methods'
 
 module SleepingKingStudios
@@ -23,6 +24,8 @@ module SleepingKingStudios
           :foreign_key => configuration[:foreign_key],
           :order => configuration[:order],
           :dependent => configuration[:dependent]
+        
+        validates :parent_id, :avoid_grandfather_paradox => true
         
         self.class_eval <<-EOV
           include SleepingKingStudios::ActsAsTree::InstanceMethods

@@ -7,9 +7,9 @@ require "acts_as_tree/version"
 Gem::Specification.new do |s|
   s.name        = "acts_as_tree"
   s.version     = SleepingKingStudios::ActsAsTree::VERSION
-  s.authors     = ["David Heinemeier Hansson", "Rob Smith"]
-  s.email       = ["", "merlin@sleepingkingstudios.com"]
-  s.homepage    = "sleepingkingstudios.com"
+  s.authors     = ["Rob Smith"]
+  s.email       = ["merlin@sleepingkingstudios.com"]
+  s.homepage    = "http://www.sleepingkingstudios.com"
   s.summary     = "Model a tree structure for Rails models with parent and child associations"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README"]
